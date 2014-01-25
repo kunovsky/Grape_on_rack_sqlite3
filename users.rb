@@ -13,13 +13,21 @@ class User
     @created_at = args[:created_at]
   end
 
+  def self.sorted_by_first_name
+  	sorted = $db.execute("select * from users order by first_name")
+  end
+
+   def self.sorted_by_last_name
+  	sorted = $db.execute("select * from users order by last_name")
+  end  
+
+  def self.sorted_by_created_at
+  	sorted = $db.execute("select * from users order by created_at")
+  end 
+
   def self.where(attribute, value)
   	query = "select * from users where #{attribute}"
   	id = $db.execute(query,value).flatten
-  end
-
-  def self.count 
-  	count = $db.execute("select count(*) from users").flatten[0]
   end
 
  def self.save(*args)
