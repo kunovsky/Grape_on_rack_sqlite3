@@ -22,8 +22,18 @@ class User
   	count = $db.execute("select count(*) from users").flatten[0]
   end
 
-  def self.all
-  	users = $db.execute("select * from users").flatten[0]
+ def self.save(*args)
+     insert =  <<-SQL
+      INSERT INTO users
+      values (NULL,?,?,?,?,?,DATETIME('now'))
+      SQL
+      $db.execute( insert,
+                   person.first_name,
+                   person.last_name,
+                   person.email,
+                   person.phone,
+                   person.created_at,
+                  )
   end
 
 end

@@ -4,18 +4,21 @@ class UserApiV1 < Grape::API
   version 'v1', :using => :path
   format :json
   
-    get '/' do
-        User.where("first_name = ?", "Amber")
+    get '/records/first_name' do
+      
+    end
+
+    get '/records/created_at' do
+        
+    end
+
+    get '/records/last_name' do
+ 
     end
     
-    post '/' do
-      {:word => params[:word], :result => "thinking"}.to_json
+    post '/records' do
+      
     end 
   
-  resource :sentences do
-    get ':sentence' do
-      {:sentence => params[:sentence], :result => "unkown"}.to_json
-    end
-  end
 
 end
