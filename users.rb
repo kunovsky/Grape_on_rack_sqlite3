@@ -30,17 +30,17 @@ class User
   	id = $db.execute(query,value).flatten
   end
 
- def self.save(*args)
+ def save
      insert =  <<-SQL
       INSERT INTO users
       values (NULL,?,?,?,?,?,DATETIME('now'))
       SQL
       $db.execute( insert,
-                   person.first_name,
-                   person.last_name,
-                   person.email,
-                   person.phone,
-                   person.created_at,
+                   self.first_name,
+                   self.last_name,
+                   self.email,
+                   self.phone,
+                   self.created_at,
                   )
   end
 
