@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'capybara/rspec'
+require 'factory_girl'
 
 require_relative '../config/application.rb'
 
@@ -10,7 +11,7 @@ RSpec.configure do |config|
   config.color_enabled = true
   config.formatter = :documentation
   config.order = 'random'
-  
+
 end
 
 
