@@ -1,4 +1,4 @@
-$:.unshift "./app"
+$:.unshift "app/apis"
 
 require 'version1'
 
