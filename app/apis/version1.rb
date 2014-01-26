@@ -1,4 +1,4 @@
-require_relative '../../app.rb'
+require_relative '../../config/application.rb'
 
 FORMATTING_INFO = [:first_name, :last_name, :email, :phone, :created_at]
 

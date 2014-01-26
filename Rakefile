@@ -1,4 +1,4 @@
-require_relative 'app'
+require_relative 'config/application.rb'
 
 namespace :db do
 
