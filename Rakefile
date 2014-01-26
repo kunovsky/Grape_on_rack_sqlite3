@@ -1,3 +1,4 @@
+require 'rspec/core/rake_task'
 require_relative 'config/application.rb'
 
 namespace :db do
@@ -14,7 +15,7 @@ namespace :db do
 		UserDB.seed(Parser.parser('db/people.csv'))
 	end
 
-	desc "drop the database"
+	desc "Drop the database"
 	task :drop do
 		puts "Deleting database..."
 		rm_f 'user.db'
@@ -25,3 +26,9 @@ desc 'Start IRB with application environment loaded'
 task :console do
   exec "irb -r./app"
 end
+
+desc "Run the specs"
+task :spec do
+RSpec::Core::RakeTask.new(:spec)
+end
+
