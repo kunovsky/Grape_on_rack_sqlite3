@@ -10,7 +10,6 @@ class UserApiV1 < Grape::API
 		def format_post_info(info)
 			formatted_hash = Hash.new
 			user_info = info.split("|")
-			p "$$$$$$$$$$$$$ - #{user_info}"
 			formatting_info = FORMATTING_INFO.dup
 			if user_info.length != formatting_info.length
 				raise ArgumentError.new('Attribute names can\'t be blank')
