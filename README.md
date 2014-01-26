@@ -4,7 +4,7 @@ I wanted the challenge of building a grape api without using an ORM
 
 #Instructions
 
--Run the follwing commands
+- Run the follwing commands to get started
 
 1. rake db:create
 2. rake db:seed
@@ -21,4 +21,6 @@ http://http://localhost:9292/v1/records/created_at - this gives you a list of al
 - You can also make a post request using curl like so:
 
 curl -X POST "http://http://localhost:9292/v1/records/first_name|last_name|email|phone|created_at"
+
+- Run rake spec to run the specs and run rakd db:drop to drop the database
 
