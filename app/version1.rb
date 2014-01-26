@@ -1,12 +1,25 @@
 require_relative '../setup.rb'
 
+FORMATTING_INFO = [:first_name, :last_name, :email, :phone, :created_at]
+
 class UserApiV1 < Grape::API
 	version 'v1', :using => :path
 	format :json
 
 	helpers do
 		def format_post_info(info)
-			info.split(",")
+			formatted_hash = Hash.new
+			user_info = info.split("|")
+			p "$$$$$$$$$$$$$ - #{user_info}"
+			formatting_info = FORMATTING_INFO.dup
+			if user_info.length != formatting_info.length
+				raise ArgumentError.new('Attribute names can\'t be blank')
+			else
+				until formatting_info.empty?
+					formatted_hash[formatting_info.shift] = user_info.shift
+				end
+			end
+			formatted_hash
 		end
 	end
 
@@ -24,9 +37,8 @@ class UserApiV1 < Grape::API
 		end
 
 		post '/:info' do
-			p format_post_info(params[:info])
-			# user = User.new(format_post_info(params[:info]))
-			# user.save
+			 user = User.new(format_post_info(params[:info]))
+			 user.save
 		end 
 	end
 end
