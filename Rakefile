@@ -2,8 +2,6 @@ require 'rspec/core/rake_task'
 
 require_relative 'config/application.rb'
 
-$db = SQLite3::Database.new 'user.db'
-
 namespace :db do
 
 	desc "Creates the database"
@@ -18,12 +16,24 @@ namespace :db do
 		UserDB.seed(Parser.parser('db/people.csv'),$db)
 	end
 
-	desc "Drop the database"
+	desc "Drop the databases"
 	task :drop do
-		puts "Deleting database..."
+		puts "Deleting databases..."
 		rm_f 'user.db'
+		rm_f 'user_testing.db'
 	end
 end
+
+desc 'Prepare testing database'
+	task :testprep do
+		puts "Deleting old test db... if it exits"
+		rm_f 'user_testing.db'
+		puts "Creating test db... "
+		UserDB.setup(SQLite3::Database.new('user_testing.db'))
+		puts "Seeding database..."
+		UserDB.seed(Parser.parser('db/people.csv'),SQLite3::Database.new('user_testing.db'))
+		puts "Done"
+	end
 
 
 desc 'Start IRB with application environment loaded'

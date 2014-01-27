@@ -1,3 +1,4 @@
+$db = SQLite3::Database.new 'user.db'
 module UserDB
   def self.setup(database)
     database.execute(
@@ -6,7 +7,7 @@ module UserDB
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         first_name VARCHAR(64) NOT NULL,
         last_name VARCHAR(64) NOT NULL,
-        email VARCHAR(64) NOT NULL,
+        email VARCHAR(64) NOT NULL UNIQUE,
         phone VARCHAR(64) NOT NULL,
         created_at DATETIME NOT NULL,
         updated_at DATETIME NOT NULL
