@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'capybara/rspec'
-require 'factory_girl'
 
 require_relative '../config/application.rb'
 

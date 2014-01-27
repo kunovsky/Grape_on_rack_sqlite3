@@ -1,8 +1,6 @@
-$db = SQLite3::Database.new 'user.db'
-
 module UserDB
-  def self.setup
-    $db.execute(
+  def self.setup(database)
+    database.execute(
       <<-SQL
       CREATE TABLE users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -17,14 +15,14 @@ module UserDB
       )
   end
 
-  def self.seed(parser)
+  def self.seed(parser, database)
      insert =  <<-SQL
       INSERT INTO users
       values (NULL,?,?,?,?,?,DATETIME('now'))
       SQL
 
     parser.each do |person|
-      $db.execute( insert,
+      database.execute( insert,
                    person.first_name,
                    person.last_name,
                    person.email,
