@@ -43,5 +43,4 @@ class User
                    self.created_at,
                   )
   end
-
 end

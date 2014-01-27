@@ -5,7 +5,7 @@ $db = SQLite3::Database.open 'user_testing.db'
 
 describe User do
 
-	context 'Initialization and attribute assignment' do
+	context 'Initialization of new user object' do
 
 		it 'should be initialized with a first name' do
 			tyson = User.new({:first_name=> 'Tyson'})
@@ -31,6 +31,9 @@ describe User do
 			tyson = User.new({:created_at=> '2013-04-17T11:36:58-07:00'})
 			tyson.created_at.should eq ('2013-04-17T11:36:58-07:00')
 		end
+	end
+
+	context 'Assingment of attributes' do
 
 		it 'should not allow for assignment of first_name' do
 			tyson = User.new(:first_name => "Tyson")
@@ -60,45 +63,60 @@ describe User do
 
 	context 'Class methods' do
 
-		it 'should list all users by first name alphabetically' do
-			all_users = User.sorted_by_first_name
-			all_users[0][1].should be <= all_users[1][1]
+		context "self.sort_by_first_name" do
+
+			it 'should list all users by first name alphabetically' do
+				all_users = User.sorted_by_first_name
+				all_users[0][1].should be <= all_users[1][1]
+			end
 		end
 
-		it 'should list all users by last name alphabetically' do
-			all_users = User.sorted_by_last_name
-			all_users[0][2].should be <= all_users[1][2]
+		context "self.sort_by_last_name" do
+
+			it 'should list all users by last name alphabetically' do
+				all_users = User.sorted_by_last_name
+				all_users[0][2].should be <= all_users[1][2]
+			end
 		end
 
-		it 'should list all users by created at with earlier created users coming first' do
-			all_users = User.sorted_by_created_at
-			all_users[0][5].should be <= all_users[1][5]
+		context 'self.sorted_by_created_at' do
+
+			it 'should list all users by created at with earlier created users coming first' do
+				all_users = User.sorted_by_created_at
+				all_users[0][5].should be <= all_users[1][5]
+			end
 		end
 
-		it 'should allow you to select users by their attributes using the self.where method' do
-			expect {User.where("id = ?", 1)}.not_to be_nil
-		end
+		context 'self.where(attribute,value)' do
 
+			it 'should allow you to select users by their attributes using the self.where method' do
+				expect {User.where("id = ?", 1)}.not_to be_nil
+			end
+		end
 	end
 
-		context 'Instance methods' do
 
-		  it 'should not allow you to save a user that has missing attributes' do
-		  	tyson = User.new({:first_name => "Tyson",
-		  									 :last_name => "Kunovsky",
-		  									 :email => "tkunovsky@email.com",
-		  									 :phone => "206-240-1332"})
-		  	expect {tyson.save}.to raise_error
-		  end
+	context 'Instance methods' do
 
-		  it 'should allow you to save a user that has all the required attribues' do
-		  	tyson = User.new({:first_name => "Tyson",
-		  									 :last_name => "Kunovsky",
-		  									 :email => "tkunovsky@email.com",
-		  									 :phone => "206-240-1332",
-		  									 :created_at => "2013-04-17T11:36:58-07:00"})
-		  	expect {tyson.save}.not_to raise_error
-		  end
+		context 'save' do
 
+			it 'should not allow you to save a user that has missing attributes' do
+				tyson = User.new({:first_name => "Tyson",
+					:last_name => "Kunovsky",
+					:email => "tkunovsky@email.com",
+					:phone => "206-240-1332"})
+				expect {tyson.save}.to raise_error
+			end
+
+
+			it 'should allow you to save a user that has all the required attribues' do
+				tyson = User.new({:first_name => "Tyson",
+					:last_name => "Kunovsky",
+					:email => "#{rand(1..1000)}tkunovsky#{rand(1..1000)}@email.com",
+					:phone => "206-240-1332",
+					:created_at => "2013-04-17T11:36:58-07:00"})
+				expect {tyson.save}.not_to raise_error
+			end
+		end
 	end
 end

@@ -13,14 +13,13 @@ namespace :db do
 	desc "Seeds the DB with the data from the csv file"
 	task :seed  do
 		puts "Seeding database..."
-		UserDB.seed(Parser.parser('db/people.csv'),$db)
+		UserDB.seed(Parser.parser('db/people.csv', User),$db)
 	end
 
 	desc "Drop the databases"
 	task :drop do
 		puts "Deleting databases..."
 		rm_f 'user.db'
-		rm_f 'user_testing.db'
 	end
 end
 
@@ -31,7 +30,7 @@ desc 'Prepare testing database'
 		puts "Creating test db... "
 		UserDB.setup(SQLite3::Database.new('user_testing.db'))
 		puts "Seeding database..."
-		UserDB.seed(Parser.parser('db/people.csv'),SQLite3::Database.new('user_testing.db'))
+		UserDB.seed(Parser.parser('db/people.csv', User),SQLite3::Database.new('user_testing.db'))
 		puts "Done"
 	end
 
