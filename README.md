@@ -23,7 +23,7 @@ http://http://localhost:9292/v1/records/created_at - this gives you a list of al
 
 curl -X POST "http://http://localhost:9292/v1/records/first_name|last_name|email|phone|created_at"
 
-- Run 'rake spec; to run the specs
+- Run 'rake spec' to run the specs
 
-- Run 'rake db:drop to delete the database'
+- Run 'rake db:drop' to delete the database
 
