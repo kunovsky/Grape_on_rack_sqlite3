@@ -1,6 +1,6 @@
 Grape API Without ORM Using SQLite3
 ===================================
-I wanted the challenge of building a grape api without using an ORM
+I decided to build a grape api without using an ORM. I configured the filesystem myself as well
 
 #Instructions
 
@@ -9,7 +9,7 @@ I wanted the challenge of building a grape api without using an ORM
 1. rake db:create
 2. rake db:seed
 3. rake testprep
-3. rackup
+4. rackup
 
 - You can then visit the api at the following endpoints 
 

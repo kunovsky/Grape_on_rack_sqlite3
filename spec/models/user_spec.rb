@@ -95,11 +95,11 @@ describe User do
 		end
 	end
 
-
 	context 'Instance methods' do
 
 		context 'save' do
 
+# this test also ensures that the database was created correctly
 			it 'should not allow you to save a user that has missing attributes' do
 				tyson = User.new({:first_name => "Tyson",
 					:last_name => "Kunovsky",

@@ -13,7 +13,7 @@ RSpec.configure do |config|
 
 end
 
-
+# This is for checking to see that each endpoint page has the correct information on it
 Capybara.configure do |config|
   config.app = MyApi::UserApiV1.new
   config.server_port = 9293
