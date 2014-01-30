@@ -108,7 +108,7 @@ describe User do
 				expect {tyson.save}.to raise_error
 			end
 
-
+# this test also ensures that the database was created correctly
 			it 'should allow you to save a user that has all the required attribues' do
 				tyson = User.new({:first_name => "Tyson",
 					:last_name => "Kunovsky",

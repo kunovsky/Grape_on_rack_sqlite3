@@ -14,7 +14,7 @@ RSpec.configure do |config|
 end
 
 
-# Capybara.configure do |config|
-#   config.app = Acme::App.new
-#   config.server_port = 9293
-# end
+Capybara.configure do |config|
+  config.app = MyApi::UserApiV1.new
+  config.server_port = 9293
+end

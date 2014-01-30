@@ -6,5 +6,4 @@ module Parser
     end
      people
   end
-  
 end
