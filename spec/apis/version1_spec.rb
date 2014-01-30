@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+$db = SQLite3::Database.open 'user_testing.db'
+
 describe MyApi::UserApiV1, :type => :feature do
 	include Rack::Test::Methods
 
@@ -49,6 +51,14 @@ describe MyApi::UserApiV1, :type => :feature do
 				last_response.status.should == 200
 				visit '/v1/records/created_at'
 				expect(page).to have_content all_users[rand(0..199)][2]
+			end
+		end
+
+		context "/:info" do
+
+			it "should allow a post to the db with correct params and return a 201 created" do
+				post "/v1/records/James,Mccarthy,#{rand(1..1000)}tkunovsky#{rand(1..1000)}@emaildotcom,2062401332,created_at"
+				last_response.status.should == 201
 			end
 		end
 
