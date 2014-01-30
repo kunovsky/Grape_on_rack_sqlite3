@@ -1,6 +1,6 @@
-Grape API Without ORM Using SQLite3
-===================================
-I decided to build a grape api without using an ORM. I configured the filesystem myself as well
+Grape API on Rack Without ORM Using SQLite3
+===========================================
+I decided to build a db back grape api mounted on rack without using an ORM and configure the filesystem myself as well
 
 #Instructions
 
@@ -22,6 +22,8 @@ http://http://localhost:9292/v1/records/created_at - this gives you a list of al
 - You can also make a post request using curl like so:
 
 curl -X POST "http://localhost:9292/v1/records/first_name,last_name,email,phone,created_at"
+
+#Other Stuff
 
 - Run 'rake spec' to run the specs
 

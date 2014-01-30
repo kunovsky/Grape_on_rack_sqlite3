@@ -19,7 +19,6 @@ module FormatInfo
 end
 
 module MyApi
-	
 	class UserApiV1 < Grape::API
 		version 'v1', :using => :path
 		format :json
