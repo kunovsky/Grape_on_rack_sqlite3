@@ -1,7 +1,6 @@
 Grape API on Rack Without ORM Using SQLite3
 ===========================================
-A simple example Grape Api mounted on rack without using an ORM. The database is Sqlite3 and I configured the file layout from scratch myself.
-
+A simple example Grape Api mounted on rack without using an ORM.
 #Instructions
 
 - Run the follwing commands to get started
