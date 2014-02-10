@@ -13,11 +13,11 @@ A simple example Grape Api mounted on rack without using an ORM. The database is
 
 - You can then visit the api at the following endpoints 
 
-http://http://localhost:9292/v1/records/first_name - this give you a list of all users sorted by first name
+http://localhost:9292/v1/records/first_name - this give you a list of all users sorted by first name
 
-http://http://localhost:9292/v1/records/last_name - this gives you a list of all users sorted by last name
+http://localhost:9292/v1/records/last_name - this gives you a list of all users sorted by last name
 
-http://http://localhost:9292/v1/records/created_at - this gives you a list of all users sorted by created at date
+http://localhost:9292/v1/records/created_at - this gives you a list of all users sorted by created at date
 
 - You can also make a post request using curl like so:
 
